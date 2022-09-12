@@ -1,17 +1,17 @@
 import './App.css';
-import FunctionalGreeting from "./components/FunctionalGreeting";
-import StatefulGreeting from "./components/StatefulGreeting";
-import HooksCounter from "./components/HooksCounter";
-import EventClass from './components/EventClass';
-import EventFunctional from './components/EventFunctional';
+import Header from './components/Header';
+
 
 function App() {
+ 
   return (
-    <div className="App">
-    <EventClass></EventClass>
-    <EventFunctional></EventFunctional>
-     
+    <>
+    <Header bgColor='red' textColor='blue'/>
+    <div className="container">
+      <h1> My app </h1>
+   
     </div>
+    </>
   );
 }
 
