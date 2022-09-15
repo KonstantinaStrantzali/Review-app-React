@@ -1,11 +1,10 @@
-import { v4 as uuidv4} from 'uuid'
 import React from 'react'
 import Card from './shared/Card'
 import Button from './shared/Button'
 import {useState} from 'react'
 import RatingSelect from './RatingSelect'
 
-function FeedbackForm(handleAdd) {
+function FeedbackForm({handleAdd}) {
     const [text, setText] = useState('')
     const [btnDisable, setBtnDisable] = useState(true)
     const [message, setMessage] = useState("")
@@ -39,7 +38,7 @@ function FeedbackForm(handleAdd) {
   return (
     
     <Card>
-        <form onSubmit = {handleSubmit}>
+        <form onSubmit={handleSubmit}>
         <h1>How would you rate our service?</h1>
        <RatingSelect select={setRating} selected={rating}></RatingSelect>
         <div className='input-group'>
