@@ -14,13 +14,16 @@ function App() {
       console.log(id)
       
     }
-   
+  }
+  const addFeedback = (newFeedback) => {
+    newFeedback.id = uuidv4()
+    setFeedback([newFeedback, ...feedback])
   }
   return (
     <>
     <Header/>
     <div className="container">
-      <FeedbackForm></FeedbackForm>
+      <FeedbackForm handleAdd = {addFeedback}></FeedbackForm>
       <FeedbackStats feedback = {feedback}></FeedbackStats>
       <FeedbackList feedback={feedback} handleDelete={deleteFeedback}></FeedbackList>
    
