@@ -1,33 +1,24 @@
-import PropTypes from 'prop-types'
+import Container from 'react-bootstrap/Container';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
+import NavDropdown from 'react-bootstrap/NavDropdown';
 
-function Header({text, textColor, bgColor}) {
-  const headerStyles = {
-    backgroundColor : bgColor,
-    color: textColor,
-  }
+function Header() {
   return (
-    <header style={headerStyles}>
-<div className='container'>
-    <h2>{text} </h2>
-
-
-</div>
-
-    </header>
-    
-  )
+    <Navbar bg="light" expand="lg">
+      <Container>
+        <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className="me-auto">
+            <Nav.Link href="#home" class="text-left">Home</Nav.Link>
+            <Nav.Link href="#link">Link</Nav.Link>
+            <Nav.Link href="#link">Link</Nav.Link>
+          </Nav>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
+  );
 }
 
-Header.defaultProps = {
-  text: "Feedback UI",
-  bgColor: "rgba(0,0,0,0.4)",
-  textColor: "#ff6a95",
-}
-
-Header.propTypes = {
-  text: PropTypes.string,
-  bgColor: PropTypes.string,
-  textColor: PropTypes.string,
-}
-
-export default Header
+export default Header;
