@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'
-
+// return <div className={`card ${reverse && 'reverse'}`}>{children}</div>
 
 function Card({children, reverse}) {
   return (
