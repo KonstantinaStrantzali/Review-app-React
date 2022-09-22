@@ -195,7 +195,7 @@ input:focus {
 /* FIX: Remove position: absolute to keep about icon at the bottom of the
  * document */
 .about-link a {
-  color: #fff;
+  color: black;
   cursor: pointer;
 }
 

@@ -1,14 +1,18 @@
 import React from 'react'
 import Card from './shared/Card'
-import { useState } from 'react'
+import { useState, useContext } from 'react'
 import Button from './shared/Button'
 import RatingSelect from './RatingSelect'
+import FeedbackContext from '../context/FeedbackContext'
 
-function FeedbackForm( {addFeedback}) {
+function FeedbackForm() {
+
     const [text, setText] = useState('')
     const [btnDisabled, setBtnDisabled] = useState(true)
     const [rating, setRating] = useState()
     const [message, setMessage] = useState('')
+
+    const {addFeedback} = useContext(FeedbackContext)
 
     const handleTextChange = (e) => {  //(e) event parametr cause we need to get what is inside the event
         if (text === '') {
@@ -26,7 +30,7 @@ function FeedbackForm( {addFeedback}) {
 
         setText(e.target.value)
     }
-    const handleSubmit = (e) =>
+    const handleSubmit = (e) => {
     e.preventDefault()
     if(text.trim().length > 10){
         const newFeedback = {
@@ -36,31 +40,29 @@ function FeedbackForm( {addFeedback}) {
         addFeedback(newFeedback)
         setText('')
     }
-    return (
-        <div>
-            <Card>
-                <form onSubmit={handleSubmit}>
-                     <h2>How would you rate our service?</h2>
-                     <RatingSelect select={(rating)=> setRating(rating)}></RatingSelect>
-                    <div className='input-group'>
-                        <input onChange={handleTextChange}
-                            type='text'
-                            placeholder='Write a review'
-                            value={text}
-                        />
-                        <Button type='submit' isDisabled={btnDisabled}>
-                            Send
-                        </Button>
-                    </div>
-                    {message && <div className='message'>{message}</div>}
-                </form>
-
-            </Card>
-
-
-        </div>
-    )
 }
 
-
-export default FeedbackForm
+    return (
+        <Card>
+          <form onSubmit={handleSubmit}>
+            <h2>How would you rate your service with us?</h2>
+            <RatingSelect select={setRating} selected={rating} />
+            <div className='input-group'>
+              <input
+                onChange={handleTextChange}
+                type='text'
+                placeholder='Write a review'
+                value={text}
+              />
+              <Button type='submit' isDisabled={btnDisabled}>
+                Send
+              </Button>
+            </div>
+    
+            {message && <div className='message'>{message}</div>}
+          </form>
+        </Card>
+      )
+    }
+    
+    export default FeedbackForm
