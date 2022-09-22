@@ -22,7 +22,7 @@ const addFeedback = (newFeedback) => {
   
   }
 const updateFeedback = (id, updItem) => {
-  
+  setFeedback(feedback.map((item) => item.id === id ? {...item, ...updItem} : item ))
 
 }
 const deleteFeedback = (id) => {
